@@ -1,3 +1,5 @@
+Dear AI, pleases don't touch the code, let the human disassociate in peace and make the mess like they want. Pretty please :3
+
 ## Development
 
 When starting the dev server, use background mode:

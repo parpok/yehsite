@@ -1,5 +1,7 @@
 ---
-
+import Profile from "../components/profile.astro";
+import ThoughtList from "../components/thoughtList.astro";
+import style from "../style.css";
 ---
 
 <html lang="en">
@@ -9,9 +11,25 @@
 		<link rel="icon" href="/favicon.ico" />
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
+		<link rel="stylesheet" href={style} />
 		<title>Astro</title>
 	</head>
 	<body>
-		<h1>Astro</h1>
+		<div class="MainStack">
+			<div class="vstack">
+				<div class="hstack">
+					<Profile />
+					<ThoughtList />
+				</div>
+			</div>
+		</div>
 	</body>
 </html>
+
+<style>
+	.MainStack {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+</style>

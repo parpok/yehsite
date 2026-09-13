@@ -1,0 +1,91 @@
+---
+import { Image } from "astro:assets";
+---
+
+<div class="vstack profile">
+    <Image
+        src="/mev3.png"
+        alt="Profile picture"
+        width="120"
+        height="120"
+        class={"pfp"}
+    />
+
+    <h1>Pat</h1>
+
+    <p>
+        Raccoon dog <s>mess of a person</s>. <br /> Have I forgot to say that I like raccoon
+        dogs? <br /> Trying to LARP as a tech bro making iPhone apps.
+    </p>
+
+    <div class="socialsList">
+        <a href="mailto:pat@parpok.xyz">Mail</a>
+        <a href="https://101010.pl/@parpok">Fedi</a>
+        <a href="https://github.com/parpok">Messy code GH</a>
+    </div>
+
+    <div class="bagesList">
+        <div class="peoplesBages"></div>
+        <a href="./"
+            ><Image
+                src="/badges/ppl/me.png"
+                alt="My badge"
+                width="88"
+                height="31"
+            /></a
+        >
+        <a href="https://memersoda.xyz"
+            ><Image
+                src="/badges/ppl/memersoda.png"
+                alt="Memersoda badge"
+                width="88"
+                height="31"
+            /></a
+        >
+        <a href="https://smeagol.neocities.org"
+            ><Image
+                src="/badges/ppl/smeagol-button.gif"
+                alt="Smeagol badge"
+                width="88"
+                height="31"
+            /></a
+        >
+
+        <a href="./"
+            ><Image
+                src="/badges/ppl/breakgimme.gif"
+                alt="Breakgimme bage"
+                width="88"
+                height="31"
+            /></a
+        >
+
+        <div class="otherBadges">
+            <Image
+                src="/badges/other/madewith_macos.gif"
+                alt="Made with MacOS"
+                width="88"
+                height="31"
+            />
+        </div>
+    </div>
+</div>
+
+<style>
+    .profile {
+        padding: 25px;
+        border-style: dotted;
+    }
+
+    .pfp {
+        border-radius: 25%;
+        border-style: dotted;
+    }
+
+    .socialsList {
+        display: flex;
+        justify-content: space-evenly;
+        padding-top: 25px;
+        padding-bottom: 25px;
+    }
+</style>
