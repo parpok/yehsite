@@ -3,20 +3,23 @@ import { Image } from "astro:assets";
 ---
 
 <div class="vstack profile">
-    <Image
-        src="/mev3.png"
-        alt="Profile picture"
-        width="120"
-        height="120"
-        class={"pfp"}
-    />
+    <div id="bio">
+        <Image
+            src="/mev3.png"
+            alt="Avatar"
+            width="120"
+            height="120"
+            class={"pfp"}
+        />
 
-    <h1>Pat</h1>
+        <h1>Pat</h1>
 
-    <p>
-        Raccoon dog <s>mess of a person</s>. <br /> Have I forgot to say that I like raccoon
-        dogs? <br /> Trying to LARP as a tech bro making iPhone apps.
-    </p>
+        <p>
+            Raccoon dog <s>mess of a person</s>. <br /> Have I forgot to say that
+            I like raccoon dogs? <br /> Trying to LARP as a tech bro making iPhone
+            apps.
+        </p>
+    </div>
 
     <div class="socialsList">
         <a href="mailto:pat@parpok.xyz">Mail</a>
@@ -25,7 +28,7 @@ import { Image } from "astro:assets";
     </div>
 
     <div class="bagesList">
-        <div class="peoplesBages"></div>
+        <!-- <div class="peoplesBages"> -->
         <a href="./"
             ><Image
                 src="/badges/ppl/me.png"
@@ -59,20 +62,21 @@ import { Image } from "astro:assets";
                 height="31"
             /></a
         >
-
-        <div class="otherBadges">
-            <Image
-                src="/badges/other/madewith_macos.gif"
-                alt="Made with MacOS"
-                width="88"
-                height="31"
-            />
-        </div>
+        <!-- </div> -->
+        <!-- <div class="otherBadges"> -->
+        <Image
+            src="/badges/other/madewith_macos.gif"
+            alt="Made with MacOS"
+            width="88"
+            height="31"
+        />
     </div>
 </div>
 
 <style>
     .profile {
+        justify-content: space-around;
+        gap: 15px;
         padding: 25px;
         border-style: dotted;
     }
@@ -84,8 +88,6 @@ import { Image } from "astro:assets";
 
     .socialsList {
         display: flex;
-        justify-content: space-evenly;
-        padding-top: 25px;
-        padding-bottom: 25px;
+        justify-content: space-around;
     }
 </style>

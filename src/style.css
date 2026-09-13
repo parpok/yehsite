@@ -25,7 +25,7 @@ body a:hover {
     flex-direction: row;
 }
 
-.vstacl {
+.vstack {
     display: flex;
     flex-direction: column;
 }
