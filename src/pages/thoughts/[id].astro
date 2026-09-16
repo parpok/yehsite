@@ -1,65 +1,50 @@
 ---
 import style from "../../style.css";
+
+import { getCollection, render } from 'astro:content';
+// 1. Generate a new path for every collection entry
+export async function getStaticPaths() {
+  const thoughts = await getCollection('thoughts');
+  return thoughts.map(thought => ({
+    params: { id: thought.data.id.toString() },
+    props: { thought },
+  }));
+}
+// 2. For your template, you can get the entry directly from the prop
+const { thought } = Astro.props;
+const { Content } = await render(thought);
+
+/// checks if there are tags and sorts them
+function sortedTags(){
+    if (thought.data.tags.length > 0){
+        return thought.data.tags.sort()
+    } else {
+        return "none"
+    }
+}
 ---
 
 <html lang="en">
     <head>
         <meta charset="utf-8" />
-        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-        <link rel="icon" href="/favicon.ico" />
+               	<link rel="icon" type="image/png" href="/mev3.png" />
+
         <meta name="viewport" content="width=device-width" />
         <meta name="generator" content={Astro.generator} />
         <link rel="stylesheet" href={style} />
-        <title>Thought - example</title>
+        <title>{thought.data.title}</title>
     </head>
     <div class="Thought vstack">
         <article>
-            <h1>Thought - example</h1>
+            <h1>{thought.data.title}</h1>
+            <p> Tags: {sortedTags()?.toString()}</p>
             <div class="Content">
-                <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Vivamus arcu magna, fermentum vel eros et, faucibus pharetra
-                    dolor. Maecenas sit amet aliquam arcu. Donec magna ipsum,
-                    dapibus quis imperdiet id, fermentum vitae lacus. Etiam
-                    velit eros, tincidunt sed lectus eu, egestas commodo nibh.
-                    Sed at est ac lectus luctus blandit a sit amet mauris.
-                    Integer sagittis ligula vitae felis maximus vehicula.
-                    Suspendisse faucibus enim quis bibendum congue. Integer
-                    ullamcorper mauris at orci tempus aliquam in vel odio. Cras
-                    placerat lorem in mattis mattis. Interdum et malesuada fames
-                    ac ante ipsum primis in faucibus. Aliquam lacinia mi a odio
-                    convallis, in lobortis odio mollis. Praesent porttitor risus
-                    nisl, ac mattis orci consequat auctor. Mauris vel egestas
-                    quam, non rhoncus nisi. Nam blandit nisi vel lacus varius,
-                    eget viverra leo euismod. Pellentesque nunc dolor, maximus
-                    nec nibh eu, placerat iaculis libero. Maecenas vehicula id
-                    libero sed auctor. Mauris risus ipsum, feugiat id metus non,
-                    lobortis vestibulum urna. Suspendisse potenti. Aenean
-                    ultrices aliquam varius. Aenean at magna sit amet nisi
-                    semper bibendum a quis eros. Pellentesque ligula arcu,
-                    euismod at scelerisque vel, volutpat quis enim. Maecenas
-                    lacus lacus, finibus quis erat vitae, rhoncus porta ex.
-                    Donec tincidunt tempus orci. Sed congue faucibus ex.
-                    Phasellus sapien nulla, porttitor non congue dictum,
-                    bibendum et ex. Etiam in tempus risus. Sed sed sem a felis
-                    convallis rutrum ac eget tellus. Praesent pulvinar, justo ut
-                    pellentesque sollicitudin, lorem leo semper arcu, non
-                    blandit eros massa quis nisi. Nulla aliquet aliquet luctus.
-                    Cras aliquet egestas sagittis. Sed a dui in odio gravida
-                    pellentesque. Aenean porttitor erat a lacus aliquam
-                    ultrices. Fusce odio quam, suscipit sit amet scelerisque
-                    non, auctor porta nisi. Fusce sit amet tortor enim. Maecenas
-                    venenatis vestibulum ex, ac consectetur urna porta in. Nunc
-                    volutpat felis sem, non scelerisque metus condimentum ac.
-                    Fusce in ullamcorper lectus, a suscipit nunc. Aliquam erat
-                    volutpat. Pellentesque vestibulum venenatis libero in
-                    iaculis. Praesent consectetur mattis erat sed placerat.
-                    Mauris vitae ipsum eget enim pretium gravida. Suspendisse
-                    aliquet sapien sit amet quam sodales pretium. Nunc nec
-                    dictum eros. Praesent varius consectetur tortor non pretium.
-                    Morbi quis est vel nisl iaculis feugiat.
-                </p>
+                <Content />
             </div>
+
+            <footer>
+                <p>Made by Pat, on {thought.data.date.toLocaleDateString()}</p>
+            </footer>
         </article>
     </div>
 </html>

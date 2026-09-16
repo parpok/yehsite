@@ -1,0 +1,35 @@
+---
+import style from "../../style.css";
+
+import { getCollection, getEntry } from 'astro:content';
+
+
+const thoughts = (await getCollection('thoughts')).sort(
+  (a, b) => b.data.date.valueOf() - a.data.date.valueOf(),
+);
+---
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+       	<link rel="icon" type="image/png" href="/mev3.png" />
+        <meta name="viewport" content="width=device-width" />
+        <meta name="generator" content={Astro.generator} />
+        <link rel="stylesheet" href={style} />
+        <title>Thoughts</title>
+    </head>
+    <h1>Thoughts, all of them.</h1>
+    <div class="vstack thoughtList">
+        <ul>
+        {
+            thoughts.map((thought) => (
+                <li>
+                    <a href=`thoughts/${thought.data.id}` >{thought.data.title}</a>
+                </li>
+            ))
+        }
+    </ul>
+    </div>
+
+
+</html>

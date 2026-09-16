@@ -1,19 +1,28 @@
 ---
+import { getCollection, getEntry } from "astro:content";
+
+const thoughts = (await getCollection("thoughts"))
+    .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
+    .slice(0, 5);
 ---
 
 <div class="vstack thoughtList">
     <h1>Thoughts (made while disassociated)</h1>
-    // list couple recents
+    <!--  list couple recents -->
     <ul>
-        <li>Thought 1</li>
-        <li>Thought 2</li>
-        <li>Thought 3</li>
+        {
+            thoughts.map((thought) => (
+                <li>
+                    <a href=`./thoughts/${thought.data.id}`>{thought.data.title}</a>
+                </li>
+            ))
+        }
     </ul>
     <a href="/thoughts">See all thoughts</a>
 </div>
 
 <style>
-    .thoughtList{
+    .thoughtList {
         border-style: solid;
         padding: 25px;
     }
