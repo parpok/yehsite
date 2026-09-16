@@ -11,6 +11,14 @@ import style from "../style.css";
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
 		<link rel="stylesheet" href={style} />
+
+		<link
+			rel="alternate"
+			type="application/rss+xml"
+			title="Pat's thoughts"
+			href={new URL("rss.xml", Astro.site)}
+		/>
+
 		<title>Astro</title>
 	</head>
 	<body>
