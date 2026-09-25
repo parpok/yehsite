@@ -1,0 +1,44 @@
+---
+import style from "../style.css";
+import Navbar from "../components/navbar.astro";
+import Footer from "../components/footer.astro";
+const { title, time } = Astro.props;
+
+---
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <link rel="icon" type="image/png" href="/mev3.png" />
+        <meta name="viewport" content="width=device-width" />
+        <meta name="generator" content={Astro.generator} />
+        <link rel="stylesheet" href={style} />
+
+        <link
+            rel="alternate"
+            type="application/rss+xml"
+            title="Pat's thoughts"
+            href={new URL("rss.xml", Astro.site)}
+        />
+
+        <!-- <title>Pat 🦝🐕</title> -->
+         <title>{title}</title>
+    </head>
+    <body>
+        <Navbar />
+        <div class="MainStack">
+          <slot />
+        </div>
+        <Footer time={time}/>
+    </body>
+</html>
+
+
+<style>
+	.MainStack {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		flex-direction: column;
+	}
+</style>

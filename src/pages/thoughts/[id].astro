@@ -1,50 +1,36 @@
 ---
-import style from "../../style.css";
-
-import { getCollection, render } from 'astro:content';
+import SiteLayout from "../../layouts/SiteLayout.astro";
+import { getCollection, render } from "astro:content";
 // 1. Generate a new path for every collection entry
 export async function getStaticPaths() {
-  const thoughts = await getCollection('thoughts');
-  return thoughts.map(thought => ({
-    params: { id: thought.data.id.toString() },
-    props: { thought },
-  }));
+    const thoughts = await getCollection("thoughts");
+    return thoughts.map((thought) => ({
+        params: { id: thought.data.id.toString() },
+        props: { thought },
+    }));
 }
 // 2. For your template, you can get the entry directly from the prop
 const { thought } = Astro.props;
 const { Content } = await render(thought);
 
 /// checks if there are tags and sorts them
-function sortedTags(){
-    if (thought.data.tags.length > 0){
-        return thought.data.tags.sort()
+function sortedTags() {
+    if (thought.data.tags.length > 0) {
+        return thought.data.tags.sort();
     } else {
-        return "none"
+        return "none";
     }
 }
 ---
 
-<html lang="en">
-    <head>
-        <meta charset="utf-8" />
-               	<link rel="icon" type="image/png" href="/mev3.png" />
-
-        <meta name="viewport" content="width=device-width" />
-        <meta name="generator" content={Astro.generator} />
-        <link rel="stylesheet" href={style} />
-        <title>{thought.data.title}</title>
-    </head>
+<SiteLayout title={thought.data.title} time={thought.data.date}>
     <div class="Thought vstack">
         <article>
             <h1>{thought.data.title}</h1>
-            <p> Tags: {sortedTags()?.toString()}</p>
+            <p>Tags: {sortedTags()?.toString()}</p>
             <div class="Content">
                 <Content />
             </div>
-
-            <footer>
-                <p>Made by Pat, on {thought.data.date.toLocaleDateString()}</p>
-            </footer>
         </article>
     </div>
-</html>
+</SiteLayout>
