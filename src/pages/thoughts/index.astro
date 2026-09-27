@@ -8,7 +8,9 @@ const thoughts = (await getCollection('thoughts')).sort(
 ---
 
 <SiteLayout title="Pats thoughts" time="2026">
+    <div id="headline">
     <h1>Thoughts, all of them.</h1>
+    </div>
     <div class="vstack thoughtList">
         <ul>
         {
@@ -21,3 +23,15 @@ const thoughts = (await getCollection('thoughts')).sort(
         </ul>
     </div>
 </SiteLayout>
+
+<style>
+    #headline{
+        text-align: left;
+        align-items: flex-start;
+        align-self: flex-start;
+    }
+    .thoughtList{
+        align-self: flex-start;
+        align-items: flex-start;
+    }
+</style>

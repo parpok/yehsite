@@ -23,6 +23,9 @@ body a:hover {
 .hstack {
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
+    margin-left: 10px;
+    margin-right: 10px;
 }
 
 .vstack {

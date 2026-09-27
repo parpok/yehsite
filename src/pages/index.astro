@@ -1,42 +1,12 @@
 ---
 import Profile from "../components/profile.astro";
 import ThoughtList from "../components/thoughtList.astro";
-import style from "../style.css";
+import SiteLayout from "../layouts/SiteLayout.astro";
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/png" href="/mev3.png" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<link rel="stylesheet" href={style} />
-
-		<link
-			rel="alternate"
-			type="application/rss+xml"
-			title="Pat's thoughts"
-			href={new URL("rss.xml", Astro.site)}
-		/>
-
-		<title>Astro</title>
-	</head>
-	<body>
-		<div class="MainStack">
-			<div class="vstack">
-				<div class="hstack">
-					<Profile />
-					<ThoughtList />
-				</div>
-			</div>
-		</div>
-	</body>
-</html>
-
-<style>
-	.MainStack {
-		display: flex;
-		align-items: center;
-		justify-content: center;
-	}
-</style>
+<SiteLayout title="Pat 🦝🐕" time="2026">
+	<div class="hstack">
+		<Profile />
+		<ThoughtList />
+	</div>
+</SiteLayout>

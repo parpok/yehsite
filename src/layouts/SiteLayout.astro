@@ -3,7 +3,6 @@ import style from "../style.css";
 import Navbar from "../components/navbar.astro";
 import Footer from "../components/footer.astro";
 const { title, time } = Astro.props;
-
 ---
 
 <html lang="en">
@@ -22,23 +21,23 @@ const { title, time } = Astro.props;
         />
 
         <!-- <title>Pat 🦝🐕</title> -->
-         <title>{title}</title>
+        <title>{title}</title>
     </head>
     <body>
         <Navbar />
         <div class="MainStack">
-          <slot />
+            <slot />
         </div>
-        <Footer time={time}/>
+        <Footer time={time} />
     </body>
 </html>
 
-
 <style>
-	.MainStack {
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		flex-direction: column;
-	}
+    .MainStack {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        padding: 25px;
+    }
 </style>

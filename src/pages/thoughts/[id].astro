@@ -23,7 +23,7 @@ function sortedTags() {
 }
 ---
 
-<SiteLayout title={thought.data.title} time={thought.data.date}>
+<SiteLayout title={thought.data.title} time={thought.data.date.toLocaleDateString()}>
     <div class="Thought vstack">
         <article>
             <h1>{thought.data.title}</h1>
