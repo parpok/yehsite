@@ -1,5 +1,5 @@
 ---
-import style from "../style.css";
+import '../style.css';
 import Navbar from "../components/navbar.astro";
 import Footer from "../components/footer.astro";
 const { title, time } = Astro.props;
@@ -11,7 +11,6 @@ const { title, time } = Astro.props;
         <link rel="icon" type="image/png" href="/mev3.png" />
         <meta name="viewport" content="width=device-width" />
         <meta name="generator" content={Astro.generator} />
-        <link rel="stylesheet" href={style} />
         <link rel="sitemap" href="/sitemap-index.xml" />
 
         <link
@@ -33,7 +32,7 @@ const { title, time } = Astro.props;
     </body>
 </html>
 
-<style>
+<style is:global>
     .MainStack {
         display: flex;
         flex: 1;
