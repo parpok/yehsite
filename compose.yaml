@@ -3,3 +3,13 @@ services:
     build: .
     ports:
       - "4321:4321"
+    develop:
+      watch:
+      - action: sync
+        path: ./src
+        target: ./src
+        initial_sync: true
+        ignore:
+          - node_modules/
+      - action: rebuild
+        path: package.json
