@@ -9,7 +9,7 @@ import node from '@astrojs/node';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://www.parpok.xyz',
+  site: 'https://parpok.xyz',
   integrations: [mdx(), sitemap({})],
 
   adapter: node({
